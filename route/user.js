@@ -76,6 +76,13 @@ router.get('/all', (req, res) => {
     })
 })
 
+router.delete('/delete', (req, res) => {
+    User.deleteMany({}).
+        then((users) => {
+            res.json({deletedUsers : users})
+        })
+})
+
 router.post('/login', 
     [
         check("username", "Please Enter a Valid Username")
